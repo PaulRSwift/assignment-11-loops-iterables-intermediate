@@ -37,23 +37,26 @@ console.assert(sumOfArray([10, 9, 8, 3, 4, 5, 6]) === 45);
 var maxOfArray = function (arrayOfNums) {
 
     var highestDigit = 0
-    var  highestDigit = arrayOfNums[i] < highestDigit
+    //var  highestDigit = arrayOfNums[i] < highestDigit
 
-    for (var i = 0; i < arrayOfNums.length; i++) {
+    for (var i = 0; i <= highestDigit; i++) {
     	//log(arrayOfNums[i])
-        if (highestDigit > arrayOfNums){
-        	return highestDigit
+        if (arrayOfNums[i] > highestDigit ){
+           highestDigit = arrayOfNums[i]
+        }
+        else if (typeof  arrayOfNums[i] === 'string'){
+           return null
         }
 
 
    }
-   //output number
+   return highestDigit//output number
 
 }
 
 console.assert(maxOfArray([2,4,3]) === 4)
 console.assert(maxOfArray([10,9,8,100,7,6]) === 100)
-console.assert( maxOfArray([1,8,'bucklemyshoe', 7] === null ) )
+console.assert( maxOfArray([1,8,'bucklemyshoe', 7]) === null  )
 
 /**
  * PART 2
@@ -62,9 +65,16 @@ console.assert( maxOfArray([1,8,'bucklemyshoe', 7] === null ) )
  * and returns true if it is a vowel, false otherwise.
  */
 
-function isVowel(symbol){
-    // YOUR CODE HERE
+ function isVowel(symbol){
+    if(typeof symbol === "string"){
+       if (symbol.toLowerCase() === "a" || symbol.toLowerCase() === "e" || symbol.toLowerCase() === "i" || symbol.toLowerCase() === "o" || symbol.toLowerCase() === "u") {
+          return true
+       }
+    }
+return false
 }
+
+
 
 console.assert(isVowel(0) === false);
 console.assert(isVowel("B") === false);
@@ -82,6 +92,18 @@ console.assert(isVowel("E") === true);
  */
 
 
+//INPUT String cited https://medium.freecodecamp.com/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb#.lrjtlqm23
+ var reverse = function (str) {
+
+    var newString = "";
+
+    for (var i = str.length - 1; i >= 0; i--) {
+        newString += str[i];
+    }
+    return newString;
+}
+
+
 console.assert(reverse("books") === "skoob")
 console.assert(reverse("we don't want no trouble") === "elbuort on tnaw t'nod ew")
 
@@ -96,7 +118,25 @@ console.assert(reverse("we don't want no trouble") === "elbuort on tnaw t'nod ew
  * - for every number that is a multiple of 3 and 5, return "FizZBuzZ"
  */
 
+ //input string
+ //input string
+ var fizzbuzz = function (multiple){
 
+ var str = ''
+
+ for (var i = 0; i < str.length; i++) {
+    if (multiple !== str % 3 && str!== str % 5){
+       return '.'
+    } else if (multiple === str % 3 && str !== str % 5){
+       return 'fizz'
+    } else if (multiple !== str % 3 && str === str % 5){
+       return 'buzz'
+    }  else if (multiple === str % 3 && str === str % 5){
+       return 'FizzBuzz'
+ }
+
+     return multiple
+ }
 
 console.assert(fizzbuzz(1) === ".")
 console.assert(fizzbuzz(2) === "..")
